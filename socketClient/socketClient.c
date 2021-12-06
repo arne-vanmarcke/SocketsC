@@ -7,11 +7,8 @@ int main(int argc, char *argv[])
     size_t msgLen=1;
     ssize_t numBytes;
     char resp[BUF_SIZE];
-    //char ByteArr[2];
     
     _gpio _Gpio={23,2};
-    // if (argc < 2 || strcmp(argv[1], "--help") == 0)
-    //     usageErr("%s msg...\n", argv[0]);
 
     /* Create client socket; bind to unique pathname (based on PID) */
     sfd = socket(AF_UNIX, SOCK_DGRAM, 0);
