@@ -37,6 +37,10 @@ int addInput(char *textptr,int pin){
     if(!line){
         return 0;
     }
+    int ret = gpiod_line_request_input(line, CONSUMER);
+    if(ret!=0){
+        return 0;
+    }
     sprintf(Input,"<div><span>Gpio %d: </span><span>%d</span></div>",pin,gpiod_line_get_value(line));
     strcat(textptr,Input);
 
