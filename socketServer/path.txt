@@ -1,4 +1,0 @@
-gcc socketServer.c -lgpiod /home/pi/theorie/tlpi-dist/libtlpi.a -I/home/pi/theorie/tlpi-dist/lib
-gcc socketClient.c /home/pi/theorie/tlpi-dist/libtlpi.a -I/home/pi/theorie/tlpi-dist/lib
-
-/usr/include/gpiod.h
