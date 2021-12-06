@@ -10,38 +10,8 @@
 #define	CONSUMER	"Consumer"
 #endif
 
-/*void TogglePin(int sigum){
-    printf("toggle!");
-}
-
-void setTimer(int interval){
-    printf("Start");
-    printf("Timer start with interval %d", interval);
-    struct itimerval it_val;
-
-    it_val.it_value.tv_sec = 0;
-    it_val.it_value.tv_usec = 0;
-    it_val.it_interval.tv_sec = interval;
-    it_val.it_interval.tv_usec = 0;
-    printf("set!");
-    if(signal(SIGINT, TogglePin)==SIG_ERR){
-        fatal("SIGINT err");
-    }
-
-    if(setitimer(ITIMER_REAL, &it_val, NULL)==-1){
-        fatal("Timer error");
-    }
-
-    if(signal(SIGVTALRM,TogglePin)==SIG_ERR){
-        fatal("Can't catch SIGALRM");
-    }
-    printf("done!");
-}*/
-
-
 int main(int argc, char *argv[])
 {
-    //pid_t pid = fork();
     struct sockaddr_un svaddr, claddr;
     int sfd, j;
     ssize_t numBytes;
@@ -74,7 +44,6 @@ int main(int argc, char *argv[])
     if (bind(sfd, (struct sockaddr *) &svaddr, sizeof(struct sockaddr_un)) == -1)
         errExit("bind");
 
-
     for (;;) {
         len = sizeof(struct sockaddr_un);
         numBytes = recvfrom(sfd, buf, BUF_SIZE, 0,
@@ -87,10 +56,8 @@ int main(int argc, char *argv[])
 
         printf("Pinnr:%d\n",buf[0]);
         printf("Time:%d\n",buf[1]);
-
         _Gpiod.gpio.pin=buf[0];
         _Gpiod.gpio.t_speed=buf[1];
-
 
         char *chipname = "gpiochip0";
         struct gpiod_chip *chip;
