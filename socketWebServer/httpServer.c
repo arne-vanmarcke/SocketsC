@@ -59,7 +59,6 @@ int addOutput(char *textptr,int pin){
     if(ret!=0){
         return 0;
     }
-    printf("OK");
     sprintf(Output,"<div><span>Gpio %d: </span><span>%d</span></div>",pin,gpiod_line_get_value(line));
     strcat(textptr,Output);
 
@@ -70,13 +69,7 @@ int addOutput(char *textptr,int pin){
 
 void setHttpHeader(char httpHeader[])
 {
-    // File object to return
-    //FILE *htmlData = fopen("index.html", "r");
     char responseData[8000];
-    // while (fgets(line, 100, htmlData) != 0) {
-    //     strcat(responseData, line);
-    // }
-    // char httpHeader[8000] = "HTTP/1.1 200 OK\r\n\n";
     strcat(responseData,"<html><head><title>Hello World example</title></head><body><h1> Hello World!</h1>");
     strcat(responseData,"<div><h1>Inputs</h1></div>");
     int err=addInput(responseData,24);
